@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.5 on win32)" generated="2025-02-12T18:51:39.455517" rpa="false" schemaversion="5">
+<suite id="s1" name="Projeto" source="C:\QAx\apps\projeto">
+<suite id="s1-s1" name="Teste" source="C:\QAx\apps\projeto\Teste">
+<suite id="s1-s1-s1" name="Resource" source="C:\QAx\apps\projeto\Teste\Resource">
+<suite id="s1-s1-s1-s1" name="viaCepTeste" source="C:\QAx\apps\projeto\Teste\Resource\viaCepTeste.robot">
+<test id="s1-s1-s1-s1-t1" name="Cenario 01 - Verificar se todos os campos retornados pelo CEP valido estão corretos" line="9">
+<kw name="Validar statuscode" owner="viaCep">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-02-12T18:51:40.185210" level="INFO">GET Request : url=https://viacep.com.br/ws/53230200/json/ 
+ path_url=/ws/53230200/json/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-02-12T18:51:40.185210" level="INFO">GET Response : url=https://viacep.com.br/ws/53230200/json/ 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.22.0', 'Date': 'Wed, 12 Feb 2025 21:51:40 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Expires': 'Wed, 12 Feb 2025 22:51:40 GMT', 'Cache-Control': 'max-age=3600, public', 'Pragma': 'public', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET', 'Access-Control-Allow-Headers': 'Content-Type, X-Request-With, X-Requested-By', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Max-Age': '86400'} 
+ body={
+  "cep": "53230-200",
+  "logradouro": "Rua Estudante Alfredo Cantalice",
+  "complemento": "",
+  "unidade": "",
+  "bairro": "Vila Popular",
+  "localidade": "Olinda",
+  "uf": "PE",
+  "estado": "Pernambuco",
+  "regiao": "Nordeste",
+  "ibge": "2609600",
+  "gia": "",
+  "ddd": "81",
+  "siafi": "2491"
+} 
+ </msg>
+<msg time="2025-02-12T18:51:40.186213" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}${VALIDO_CEP}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-02-12T18:51:39.862976" elapsed="0.323237"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.186213" elapsed="0.001455"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:39.862075" elapsed="0.325593"/>
+</kw>
+<kw name="Validar resposta json de cep valido" owner="viaCep">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-02-12T18:51:40.497908" level="INFO">GET Request : url=https://viacep.com.br/ws/53230200/json/ 
+ path_url=/ws/53230200/json/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-02-12T18:51:40.497908" level="INFO">GET Response : url=https://viacep.com.br/ws/53230200/json/ 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.22.0', 'Date': 'Wed, 12 Feb 2025 21:51:40 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Expires': 'Wed, 12 Feb 2025 22:51:40 GMT', 'Cache-Control': 'max-age=3600, public', 'Pragma': 'public', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET', 'Access-Control-Allow-Headers': 'Content-Type, X-Request-With, X-Requested-By', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Max-Age': '86400'} 
+ body={
+  "cep": "53230-200",
+  "logradouro": "Rua Estudante Alfredo Cantalice",
+  "complemento": "",
+  "unidade": "",
+  "bairro": "Vila Popular",
+  "localidade": "Olinda",
+  "uf": "PE",
+  "estado": "Pernambuco",
+  "regiao": "Nordeste",
+  "ibge": "2609600",
+  "gia": "",
+  "ddd": "81",
+  "siafi": "2491"
+} 
+ </msg>
+<msg time="2025-02-12T18:51:40.497908" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}${VALIDO_CEP}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.188638" elapsed="0.310273"/>
+</kw>
+<kw name="Convert String To Json" owner="JSONLibrary">
+<msg time="2025-02-12T18:51:40.499958" level="INFO">${json} = {'cep': '53230-200', 'logradouro': 'Rua Estudante Alfredo Cantalice', 'complemento': '', 'unidade': '', 'bairro': 'Vila Popular', 'localidade': 'Olinda', 'uf': 'PE', 'estado': 'Pernambuco', 'regiao': ...</msg>
+<var>${json}</var>
+<arg>${response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" start="2025-02-12T18:51:40.498911" elapsed="0.001047"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["cep"]}</arg>
+<arg>53230-200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.499958" elapsed="0.000952"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["logradouro"]}</arg>
+<arg>Rua Estudante Alfredo Cantalice</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.500910" elapsed="0.001001"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["bairro"]}</arg>
+<arg>Vila Popular</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.501911" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["localidade"]}</arg>
+<arg>Olinda</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.501911" elapsed="0.001062"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["uf"]}</arg>
+<arg>PE</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.502973" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["estado"]}</arg>
+<arg>Pernambuco</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.502973" elapsed="0.001033"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["regiao"]}</arg>
+<arg>Nordeste</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.504006" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["ibge"]}</arg>
+<arg>2609600</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.504006" elapsed="0.001516"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["ddd"]}</arg>
+<arg>81</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.505522" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["siafi"]}</arg>
+<arg>2491</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.506571" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Empty" owner="BuiltIn">
+<msg time="2025-02-12T18:51:40.507656" level="INFO">Length is 0.</msg>
+<arg>${json["complemento"]}</arg>
+<arg>${VAZIO}</arg>
+<doc>Verifies that the given item is empty.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.506571" elapsed="0.001085"/>
+</kw>
+<kw name="Should Be Empty" owner="BuiltIn">
+<msg time="2025-02-12T18:51:40.507656" level="INFO">Length is 0.</msg>
+<arg>${json["unidade"]}</arg>
+<arg>${VAZIO}</arg>
+<doc>Verifies that the given item is empty.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.507656" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Empty" owner="BuiltIn">
+<msg time="2025-02-12T18:51:40.508597" level="INFO">Length is 0.</msg>
+<arg>${json["gia"]}</arg>
+<arg>${VAZIO}</arg>
+<doc>Verifies that the given item is empty.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.508597" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:40.188638" elapsed="0.320931"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:39.861025" elapsed="0.648544"/>
+</test>
+<test id="s1-s1-s1-s1-t2" name="Cenario 02 - Verificar se todos os campos retornados pelo CEP que possui traço estão corretos" line="13">
+<kw name="Validar status de cep valido com traço" owner="viaCep">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-02-12T18:51:40.827365" level="INFO">GET Request : url=https://viacep.com.br/ws/53230-200/json/ 
+ path_url=/ws/53230-200/json/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-02-12T18:51:40.827365" level="INFO">GET Response : url=https://viacep.com.br/ws/53230-200/json/ 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.22.0', 'Date': 'Wed, 12 Feb 2025 21:51:40 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Expires': 'Wed, 12 Feb 2025 22:51:40 GMT', 'Cache-Control': 'max-age=3600, public', 'Pragma': 'public', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET', 'Access-Control-Allow-Headers': 'Content-Type, X-Request-With, X-Requested-By', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Max-Age': '86400'} 
+ body={
+  "cep": "53230-200",
+  "logradouro": "Rua Estudante Alfredo Cantalice",
+  "complemento": "",
+  "unidade": "",
+  "bairro": "Vila Popular",
+  "localidade": "Olinda",
+  "uf": "PE",
+  "estado": "Pernambuco",
+  "regiao": "Nordeste",
+  "ibge": "2609600",
+  "gia": "",
+  "ddd": "81",
+  "siafi": "2491"
+} 
+ </msg>
+<msg time="2025-02-12T18:51:40.828367" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}${VALIDO_CEP_TRACO}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.512573" elapsed="0.315794"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.828367" elapsed="0.000999"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:40.512573" elapsed="0.317967"/>
+</kw>
+<kw name="Validar resposta json de cep valido" owner="viaCep">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-02-12T18:51:41.145168" level="INFO">GET Request : url=https://viacep.com.br/ws/53230200/json/ 
+ path_url=/ws/53230200/json/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-02-12T18:51:41.146194" level="INFO">GET Response : url=https://viacep.com.br/ws/53230200/json/ 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.22.0', 'Date': 'Wed, 12 Feb 2025 21:51:41 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Expires': 'Wed, 12 Feb 2025 22:51:41 GMT', 'Cache-Control': 'max-age=3600, public', 'Pragma': 'public', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET', 'Access-Control-Allow-Headers': 'Content-Type, X-Request-With, X-Requested-By', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Max-Age': '86400'} 
+ body={
+  "cep": "53230-200",
+  "logradouro": "Rua Estudante Alfredo Cantalice",
+  "complemento": "",
+  "unidade": "",
+  "bairro": "Vila Popular",
+  "localidade": "Olinda",
+  "uf": "PE",
+  "estado": "Pernambuco",
+  "regiao": "Nordeste",
+  "ibge": "2609600",
+  "gia": "",
+  "ddd": "81",
+  "siafi": "2491"
+} 
+ </msg>
+<msg time="2025-02-12T18:51:41.147543" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}${VALIDO_CEP}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-02-12T18:51:40.831543" elapsed="0.316000"/>
+</kw>
+<kw name="Convert String To Json" owner="JSONLibrary">
+<msg time="2025-02-12T18:51:41.148501" level="INFO">${json} = {'cep': '53230-200', 'logradouro': 'Rua Estudante Alfredo Cantalice', 'complemento': '', 'unidade': '', 'bairro': 'Vila Popular', 'localidade': 'Olinda', 'uf': 'PE', 'estado': 'Pernambuco', 'regiao': ...</msg>
+<var>${json}</var>
+<arg>${response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" start="2025-02-12T18:51:41.147543" elapsed="0.000958"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["cep"]}</arg>
+<arg>53230-200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.148501" elapsed="0.001000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["logradouro"]}</arg>
+<arg>Rua Estudante Alfredo Cantalice</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.150501" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["bairro"]}</arg>
+<arg>Vila Popular</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.150501" elapsed="0.001079"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["localidade"]}</arg>
+<arg>Olinda</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.151580" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["uf"]}</arg>
+<arg>PE</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.151580" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["estado"]}</arg>
+<arg>Pernambuco</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.152582" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["regiao"]}</arg>
+<arg>Nordeste</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.152582" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["ibge"]}</arg>
+<arg>2609600</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.152582" elapsed="0.000997"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["ddd"]}</arg>
+<arg>81</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.153579" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["siafi"]}</arg>
+<arg>2491</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.153579" elapsed="0.000923"/>
+</kw>
+<kw name="Should Be Empty" owner="BuiltIn">
+<msg time="2025-02-12T18:51:41.154502" level="INFO">Length is 0.</msg>
+<arg>${json["complemento"]}</arg>
+<arg>${VAZIO}</arg>
+<doc>Verifies that the given item is empty.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.154502" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Empty" owner="BuiltIn">
+<msg time="2025-02-12T18:51:41.155592" level="INFO">Length is 0.</msg>
+<arg>${json["unidade"]}</arg>
+<arg>${VAZIO}</arg>
+<doc>Verifies that the given item is empty.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.155592" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Empty" owner="BuiltIn">
+<msg time="2025-02-12T18:51:41.156190" level="INFO">Length is 0.</msg>
+<arg>${json["gia"]}</arg>
+<arg>${VAZIO}</arg>
+<doc>Verifies that the given item is empty.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.156190" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:40.831543" elapsed="0.325691"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:40.510570" elapsed="0.646664"/>
+</test>
+<test id="s1-s1-s1-s1-t3" name="Cenario 03 - Verificar CEP invalido com 8 digitos" line="17">
+<kw name="Validar CEP invalido com 8 digitos" owner="viaCep">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-02-12T18:51:41.477301" level="INFO">GET Request : url=https://viacep.com.br/ws/11111111/json/ 
+ path_url=/ws/11111111/json/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-02-12T18:51:41.477301" level="INFO">GET Response : url=https://viacep.com.br/ws/11111111/json/ 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.22.0', 'Date': 'Wed, 12 Feb 2025 21:51:41 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET', 'Access-Control-Allow-Headers': 'Content-Type, X-Request-With, X-Requested-By', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Max-Age': '86400', 'Strict-Transport-Security': 'max-age=63072000'} 
+ body={
+  "erro": "true"
+} 
+ </msg>
+<msg time="2025-02-12T18:51:41.477301" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}${INVALIDO_CEP}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.160706" elapsed="0.316595"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.478316" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:41.159698" elapsed="0.318618"/>
+</kw>
+<kw name="Validar mensagem de erro" owner="viaCep">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-02-12T18:51:41.810378" level="INFO">GET Request : url=https://viacep.com.br/ws/11111111/json/ 
+ path_url=/ws/11111111/json/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-02-12T18:51:41.811380" level="INFO">GET Response : url=https://viacep.com.br/ws/11111111/json/ 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.22.0', 'Date': 'Wed, 12 Feb 2025 21:51:41 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET', 'Access-Control-Allow-Headers': 'Content-Type, X-Request-With, X-Requested-By', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Max-Age': '86400', 'Strict-Transport-Security': 'max-age=63072000'} 
+ body={
+  "erro": "true"
+} 
+ </msg>
+<msg time="2025-02-12T18:51:41.812378" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}${INVALIDO_CEP}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.479322" elapsed="0.333056"/>
+</kw>
+<kw name="Convert String To Json" owner="JSONLibrary">
+<msg time="2025-02-12T18:51:41.814382" level="INFO">${json} = {'erro': 'true'}</msg>
+<var>${json}</var>
+<arg>${response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" start="2025-02-12T18:51:41.813394" elapsed="0.000988"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${json["erro"]}</arg>
+<arg>true</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.814382" elapsed="0.000995"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:41.479322" elapsed="0.336055"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:41.158192" elapsed="0.657185"/>
+</test>
+<test id="s1-s1-s1-s1-t4" name="Cenario 04 - Verificar CEP invalido com menos de 8 digitos" line="21">
+<kw name="Validar status 400 com menos de 8 digitos" owner="viaCep">
+<kw name="Criar Sessao" owner="viaCep">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-02-12T18:51:41.819817" level="INFO">Creating Session using : alias=minha_sessao, url=https://viacep.com.br/ws, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${session_name}</arg>
+<arg>${url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-02-12T18:51:41.819817" elapsed="0.000890"/>
+</kw>
+<arg>minha_sessao</arg>
+<arg>${BASE_URL}</arg>
+<status status="PASS" start="2025-02-12T18:51:41.818708" elapsed="0.001999"/>
+</kw>
+<kw name="Fazer Requisicao GET" owner="viaCep">
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2025-02-12T18:51:41.821741" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2025-02-12T18:51:42.178234" level="INFO">GET Request : url=https://viacep.com.br/ws/111/json/ 
+ path_url=/ws/111/json/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-02-12T18:51:42.178234" level="INFO">GET Response : url=https://viacep.com.br/ws/111/json/ 
+ status=400, reason=Bad Request 
+ headers={'Server': 'nginx/1.22.0', 'Date': 'Wed, 12 Feb 2025 21:51:42 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '494', 'Connection': 'close', 'ETag': '"6242f812-1ee"', 'Strict-Transport-Security': 'max-age=63072000'} 
+ body=&lt;!DOCTYPE HTML&gt;
+&lt;html lang="pt-br"&gt;
+
+&lt;head&gt;
+  &lt;title&gt;ViaCEP 400&lt;/title&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;style type="text/css"&gt;
+      h1 {
+          color: #555;
+          text-align: center;
+          font-size: 4em;
+      }
+      h2, h3 {
+          color: #666;
+          text-align: center;
+          font-size: 3em;
+      }
+      h3 {
+          font-size: 1.5em;
+      }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Http 400&lt;/h1&gt;
+    &lt;h3&gt;Verifique a URL&lt;/h3&gt;
+    &lt;h3&gt;{Bad Request}&lt;/h3&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+ 
+ </msg>
+<msg time="2025-02-12T18:51:42.179233" level="INFO">C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'viacep.com.br'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-02-12T18:51:42.180248" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<var>${response}</var>
+<arg>minha_sessao</arg>
+<arg>${endpoint}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2025-02-12T18:51:41.820707" elapsed="0.359541"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2025-02-12T18:51:42.180248" elapsed="0.000000"/>
+</return>
+<msg time="2025-02-12T18:51:42.181234" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<var>${response}</var>
+<arg>${INVALIDO_CEP_MENOR}</arg>
+<status status="PASS" start="2025-02-12T18:51:41.820707" elapsed="0.360527"/>
+</kw>
+<kw name="Verificar Status Code" owner="viaCep">
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-02-12T18:51:42.183282" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>${STATUS_ESPERADO}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-02-12T18:51:42.182310" elapsed="0.000972"/>
+</kw>
+<arg>${response}</arg>
+<arg>${STATUS_ESPERADO}</arg>
+<status status="PASS" start="2025-02-12T18:51:42.181234" elapsed="0.002048"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:41.818708" elapsed="0.364574"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:41.817704" elapsed="0.366536"/>
+</test>
+<test id="s1-s1-s1-s1-t5" name="Cenario 05 - Verificar CEP invalido com mais de 8 digitos" line="24">
+<kw name="Validar Status 400 com mais de 8 digitos" owner="viaCep">
+<kw name="Criar Sessao" owner="viaCep">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-02-12T18:51:42.187743" level="INFO">Creating Session using : alias=minha_sessao, url=https://viacep.com.br/ws, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${session_name}</arg>
+<arg>${url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-02-12T18:51:42.187743" elapsed="0.001012"/>
+</kw>
+<arg>minha_sessao</arg>
+<arg>${BASE_URL}</arg>
+<status status="PASS" start="2025-02-12T18:51:42.186740" elapsed="0.002015"/>
+</kw>
+<kw name="Fazer Requisicao GET" owner="viaCep">
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2025-02-12T18:51:42.189743" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2025-02-12T18:51:42.540392" level="INFO">GET Request : url=https://viacep.com.br/ws/222222222/json/ 
+ path_url=/ws/222222222/json/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-02-12T18:51:42.541406" level="INFO">GET Response : url=https://viacep.com.br/ws/222222222/json/ 
+ status=400, reason=Bad Request 
+ headers={'Server': 'nginx/1.22.0', 'Date': 'Wed, 12 Feb 2025 21:51:42 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '494', 'Connection': 'close', 'ETag': '"6242f812-1ee"', 'Strict-Transport-Security': 'max-age=63072000'} 
+ body=&lt;!DOCTYPE HTML&gt;
+&lt;html lang="pt-br"&gt;
+
+&lt;head&gt;
+  &lt;title&gt;ViaCEP 400&lt;/title&gt;
+  &lt;meta charset="utf-8" /&gt;
+  &lt;style type="text/css"&gt;
+      h1 {
+          color: #555;
+          text-align: center;
+          font-size: 4em;
+      }
+      h2, h3 {
+          color: #666;
+          text-align: center;
+          font-size: 3em;
+      }
+      h3 {
+          font-size: 1.5em;
+      }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;Http 400&lt;/h1&gt;
+    &lt;h3&gt;Verifique a URL&lt;/h3&gt;
+    &lt;h3&gt;{Bad Request}&lt;/h3&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+ 
+ </msg>
+<msg time="2025-02-12T18:51:42.541406" level="INFO">C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'viacep.com.br'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-02-12T18:51:42.542410" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<var>${response}</var>
+<arg>minha_sessao</arg>
+<arg>${endpoint}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2025-02-12T18:51:42.189743" elapsed="0.352667"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2025-02-12T18:51:42.542410" elapsed="0.001024"/>
+</return>
+<msg time="2025-02-12T18:51:42.543434" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<var>${response}</var>
+<arg>${INVALIDO_CEP_MAIOR}</arg>
+<status status="PASS" start="2025-02-12T18:51:42.188755" elapsed="0.354679"/>
+</kw>
+<kw name="Verificar Status Code" owner="viaCep">
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-02-12T18:51:42.545405" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>${STATUS_ESPERADO}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-02-12T18:51:42.545405" elapsed="0.000000"/>
+</kw>
+<arg>${response}</arg>
+<arg>${STATUS_ESPERADO}</arg>
+<status status="PASS" start="2025-02-12T18:51:42.544404" elapsed="0.002143"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:42.186740" elapsed="0.359807"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:42.185232" elapsed="0.361581"/>
+</test>
+<test id="s1-s1-s1-s1-t6" name="Cenario 06 - Verificar se o CEP retornado esta diferente do esperado" line="27">
+<kw name="Validar statuscode cep" owner="viaCep">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-02-12T18:51:42.858387" level="INFO">GET Request : url=https://viacep.com.br/ws/53230115/json/ 
+ path_url=/ws/53230115/json/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-02-12T18:51:42.859478" level="INFO">GET Response : url=https://viacep.com.br/ws/53230115/json/ 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.22.0', 'Date': 'Wed, 12 Feb 2025 21:51:42 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Expires': 'Wed, 12 Feb 2025 22:51:42 GMT', 'Cache-Control': 'max-age=3600, public', 'Pragma': 'public', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET', 'Access-Control-Allow-Headers': 'Content-Type, X-Request-With, X-Requested-By', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Max-Age': '86400'} 
+ body={
+  "cep": "53230-115",
+  "logradouro": "Rua Carmela Dutra",
+  "complemento": "",
+  "unidade": "",
+  "bairro": "Vila Popular",
+  "localidade": "Olinda",
+  "uf": "PE",
+  "estado": "Pernambuco",
+  "regiao": "Nordeste",
+  "ibge": "2609600",
+  "gia": "",
+  "ddd": "81",
+  "siafi": "2491"
+} 
+ </msg>
+<msg time="2025-02-12T18:51:42.860394" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}${DIFERENTE_CEP}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-02-12T18:51:42.549837" elapsed="0.311555"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-02-12T18:51:42.861392" elapsed="0.001004"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:42.548818" elapsed="0.313578"/>
+</kw>
+<kw name="Validar cep diferente do esperado" owner="viaCep">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-02-12T18:51:43.170821" level="INFO">GET Request : url=https://viacep.com.br/ws/53230115/json/ 
+ path_url=/ws/53230115/json/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-02-12T18:51:43.170821" level="INFO">GET Response : url=https://viacep.com.br/ws/53230115/json/ 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.22.0', 'Date': 'Wed, 12 Feb 2025 21:51:43 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Expires': 'Wed, 12 Feb 2025 22:51:43 GMT', 'Cache-Control': 'max-age=3600, public', 'Pragma': 'public', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET', 'Access-Control-Allow-Headers': 'Content-Type, X-Request-With, X-Requested-By', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Max-Age': '86400'} 
+ body={
+  "cep": "53230-115",
+  "logradouro": "Rua Carmela Dutra",
+  "complemento": "",
+  "unidade": "",
+  "bairro": "Vila Popular",
+  "localidade": "Olinda",
+  "uf": "PE",
+  "estado": "Pernambuco",
+  "regiao": "Nordeste",
+  "ibge": "2609600",
+  "gia": "",
+  "ddd": "81",
+  "siafi": "2491"
+} 
+ </msg>
+<msg time="2025-02-12T18:51:43.170821" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}${DIFERENTE_CEP}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-02-12T18:51:42.863391" elapsed="0.307430"/>
+</kw>
+<kw name="Convert String To Json" owner="JSONLibrary">
+<msg time="2025-02-12T18:51:43.173823" level="INFO">${json} = {'cep': '53230-115', 'logradouro': 'Rua Carmela Dutra', 'complemento': '', 'unidade': '', 'bairro': 'Vila Popular', 'localidade': 'Olinda', 'uf': 'PE', 'estado': 'Pernambuco', 'regiao': 'Nordeste', 'i...</msg>
+<var>${json}</var>
+<arg>${response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" start="2025-02-12T18:51:43.171820" elapsed="0.002003"/>
+</kw>
+<kw name="Should Not Be Equal As Strings" owner="BuiltIn">
+<arg>${CEP_RECEBIDO}</arg>
+<arg>${CEP_ESPERADO}</arg>
+<doc>Fails if objects are equal after converting them to strings.</doc>
+<status status="PASS" start="2025-02-12T18:51:43.173823" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:42.863391" elapsed="0.312015"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:42.547817" elapsed="0.627589"/>
+</test>
+<test id="s1-s1-s1-s1-t7" name="Cenario 07 - Verificar CEP não informado" line="30">
+<kw name="Validar CEP não informado" owner="viaCep">
+<kw name="Criar Sessao" owner="viaCep">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-02-12T18:51:43.182412" level="INFO">Creating Session using : alias=minha_sessao, url=https://viacep.com.br/ws, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${session_name}</arg>
+<arg>${url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-02-12T18:51:43.181411" elapsed="0.001001"/>
+</kw>
+<arg>minha_sessao</arg>
+<arg>${BASE_URL}</arg>
+<status status="PASS" start="2025-02-12T18:51:43.181411" elapsed="0.001001"/>
+</kw>
+<kw name="Fazer Requisicao GET" owner="viaCep">
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2025-02-12T18:51:43.183412" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2025-02-12T18:51:43.535255" level="INFO">GET Request : url=https://viacep.com.br/json/ 
+ path_url=/json/ 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-02-12T18:51:43.535255" level="INFO">GET Response : url=https://viacep.com.br/json/ 
+ status=404, reason=Not Found 
+ headers={'Server': 'nginx/1.22.0', 'Content-Type': 'text/html; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'Strict-Transport-Security': 'max-age=63072000', 'Date': 'Wed, 12 Feb 2025 21:51:43 GMT', 'X-Page-Speed': '1.13.35.2-0', 'Cache-Control': 'max-age=0, no-cache', 'Content-Encoding': 'gzip'} 
+ body=&lt;!DOCTYPE HTML&gt;
+&lt;html lang="pt-br"&gt;
+&lt;head&gt;
+&lt;title&gt;ViaCEP 404&lt;/title&gt;
+&lt;meta charset="utf-8"/&gt;
+&lt;style type="text/css"&gt;h1{color:#555;text-align:center;font-size:4em}h2,h3{color:#666;text-align:center;font-size:3em}h3{font-size:1.5em}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Http 404&lt;/h1&gt;
+&lt;h3&gt;Página Não Encontrada&lt;/h3&gt;
+&lt;h3&gt;{Not Found}&lt;/h3&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+ 
+ </msg>
+<msg time="2025-02-12T18:51:43.535255" level="INFO">C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'viacep.com.br'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-02-12T18:51:43.536256" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<var>${response}</var>
+<arg>minha_sessao</arg>
+<arg>${endpoint}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2025-02-12T18:51:43.183412" elapsed="0.352844"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2025-02-12T18:51:43.536256" elapsed="0.001280"/>
+</return>
+<msg time="2025-02-12T18:51:43.537536" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<var>${response}</var>
+<arg>${VAZIO_CEP}</arg>
+<status status="PASS" start="2025-02-12T18:51:43.183412" elapsed="0.354124"/>
+</kw>
+<kw name="Verificar Status Code" owner="viaCep">
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-02-12T18:51:43.539539" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>${STATUS_ESPERADO}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-02-12T18:51:43.538536" elapsed="0.001003"/>
+</kw>
+<arg>${response}</arg>
+<arg>${STATUS_404}</arg>
+<status status="PASS" start="2025-02-12T18:51:43.537536" elapsed="0.003048"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:43.181411" elapsed="0.359173"/>
+</kw>
+<status status="PASS" start="2025-02-12T18:51:43.180482" elapsed="0.360102"/>
+</test>
+<status status="PASS" start="2025-02-12T18:51:39.485437" elapsed="4.060009"/>
+</suite>
+<status status="PASS" start="2025-02-12T18:51:39.482931" elapsed="4.064627"/>
+</suite>
+<status status="PASS" start="2025-02-12T18:51:39.480933" elapsed="4.067623"/>
+</suite>
+<status status="PASS" start="2025-02-12T18:51:39.460208" elapsed="4.090350"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Projeto" id="s1" pass="7" fail="0" skip="0">Projeto</stat>
+<stat name="Teste" id="s1-s1" pass="7" fail="0" skip="0">Projeto.Teste</stat>
+<stat name="Resource" id="s1-s1-s1" pass="7" fail="0" skip="0">Projeto.Teste.Resource</stat>
+<stat name="viaCepTeste" id="s1-s1-s1-s1" pass="7" fail="0" skip="0">Projeto.Teste.Resource.viaCepTeste</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-02-12T18:51:39.491987" level="WARN">Error in file 'C:\QAx\apps\projeto\Teste\Resource\viaCep.robot' on line 95: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-02-12T18:51:41.821741" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2025-02-12T18:51:42.189743" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2025-02-12T18:51:43.183412" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+</errors>
+</robot>

@@ -1,0 +1,35 @@
+{"level":30,"time":"2025-02-12T15:17:20.714Z","pid":18292,"hostname":"DESKTOP-3VMDAUN","msg":"Listening on 59969"}
+(node:18292) DeprecationWarning: Calling start() is no longer necessary. It can be safely omitted.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+================= Original suppressed error =================
+Error: Browser has been closed.
+    at PlaywrightState.getActiveBrowser (C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\Browser\wrapper\index.js:12223:15)
+    at PlaywrightServer.getActiveBrowser (C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\Browser\wrapper\index.js:13119:59)
+    at PlaywrightServer.setTimeout (C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\Browser\wrapper\index.js:13367:57)
+    at Object.onReceiveHalfClose (C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server.js:1425:25)
+    at BaseServerInterceptingCall.maybePushNextMessage (C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:570:31)
+    at BaseServerInterceptingCall.handleEndEvent (C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:610:14)
+    at ServerHttp2Stream.<anonymous> (C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:377:18)
+    at ServerHttp2Stream.emit (node:events:531:35)
+    at endReadableNT (node:internal/streams/readable:1696:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+=============================================================
+{"level":30,"time":"2025-02-12T15:17:21.012Z","pid":18292,"hostname":"DESKTOP-3VMDAUN","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-02-12T15:17:21.012Z","pid":18292,"hostname":"DESKTOP-3VMDAUN","msg":"End of node method getBrowserCatalog"}
+================= Original suppressed error =================
+Error: Browser has been closed.
+    at PlaywrightState.getActiveBrowser (C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\Browser\wrapper\index.js:12223:15)
+    at PlaywrightServer.getActiveBrowser (C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\Browser\wrapper\index.js:13119:59)
+    at PlaywrightServer.setTimeout (C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\Browser\wrapper\index.js:13367:57)
+    at Object.onReceiveHalfClose (C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server.js:1425:25)
+    at BaseServerInterceptingCall.maybePushNextMessage (C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:570:31)
+    at BaseServerInterceptingCall.handleEndEvent (C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:610:14)
+    at ServerHttp2Stream.<anonymous> (C:\Users\limal\AppData\Local\Programs\Python\Python312\Lib\site-packages\Browser\wrapper\node_modules\@grpc\grpc-js\build\src\server-interceptors.js:377:18)
+    at ServerHttp2Stream.emit (node:events:531:35)
+    at endReadableNT (node:internal/streams/readable:1696:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+=============================================================
+{"level":30,"time":"2025-02-12T15:17:21.046Z","pid":18292,"hostname":"DESKTOP-3VMDAUN","msg":"Start of node method getBrowserCatalog"}
+{"level":30,"time":"2025-02-12T15:17:21.046Z","pid":18292,"hostname":"DESKTOP-3VMDAUN","msg":"End of node method getBrowserCatalog"}
+{"level":30,"time":"2025-02-12T15:17:22.060Z","pid":18292,"hostname":"DESKTOP-3VMDAUN","msg":"Start of node method closeAllBrowsers"}
+{"level":30,"time":"2025-02-12T15:17:22.060Z","pid":18292,"hostname":"DESKTOP-3VMDAUN","msg":"End of node method closeAllBrowsers"}
